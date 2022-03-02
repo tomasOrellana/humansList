@@ -1,8 +1,18 @@
-import '../styles/globals.css'
-import type { AppProps } from 'next/app'
+import type { AppProps } from "next/app";
+import { ChakraProvider } from "@chakra-ui/react";
+import Layout from "../layout";
+import { SessionProvider } from "../context/session";
 
 function MyApp({ Component, pageProps }: AppProps) {
-  return <Component {...pageProps} />
+  return (
+    <ChakraProvider>
+      <SessionProvider>
+        <Layout>
+          <Component {...pageProps} />
+        </Layout>
+      </SessionProvider>
+    </ChakraProvider>
+  );
 }
 
-export default MyApp
+export default MyApp;
